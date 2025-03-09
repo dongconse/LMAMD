@@ -7,10 +7,9 @@ import sys
 import warnings
 import re
 
-# with open('data//EUA//user_count//eua_200.json', 'r') as f1:
-#     eua = json.load(f1)
-with open('data//eua_200.json', 'r') as f1:
-    eua = json.load(f1)
+with open('data//EUA//user_count//eua_200.json', 'r') as f1:
+     eua = json.load(f1)
+
 class EVA:
     def __init__(self):
        self.data = copy.deepcopy(eua)
