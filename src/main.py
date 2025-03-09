@@ -113,7 +113,7 @@ if __name__ == "__main__":
     rounds = 5
     np.random.seed(0)
 
-    evaluation_round = 2
+    evaluation_round = 10
     scores = []
 
     performance = 0
