@@ -7,4 +7,15 @@ Microservice deployment in resource-constrained edge environments remains challe
 ![image](figures/performance.png)
 
 ## Usage
+- We have placed sample files for various parameters of each dataset.
 
+- Enter the directory src and start LMAMD
+  ```bash
+  python "main.py"
+  ```
+## ACKNOWNLEDGES
+The links to the original data are below.
+<span id="citation-1"></span>
+- Geolife: https://www.microsoft.com/en-us/download/details.aspx?id=52367
+- Telecom Shanghai: https://www.kaggle.com/datasets/mexwell/telecom-shanghai-dataset
+- EUA: https://github.com/PhuLai/eua-dataset 
