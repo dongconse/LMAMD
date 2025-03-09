@@ -4,3 +4,4 @@ Microservice deployment in resource-constrained edge environments remains challe
 ![image](figures/Framework.jpg)
 
 ## Results
+![image](figures/performance.png)
