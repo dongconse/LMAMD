@@ -16,20 +16,7 @@ class EVA:
     def reset(self):
        self.data = copy.deepcopy(eua)
     def calculate_distance(self, lon1, lat1, lon2, lat2):
-        """
-        使用haversine公式计算两点间的距离（单位：千米）
-
-        :param lat1: 第一个点的纬度
-        :param lon1: 第一个点的经度
-        :param lat2: 第二个点的经度
-        :param lon2: 第二个点的纬度
-        :return: 两点间的距离（千米）
-        """
-        R = 6371000  # 地球平均半径，单位：千米
-        # print(type(lon1))
-        # print(type(lat1))
-        # print(type(lon2))
-        # print(type(lat2))
+        R = 6371000
 
         dLat = math.radians(lat2 - lat1)
         dLon = math.radians(lon2 - lon1)
@@ -49,14 +36,12 @@ class EVA:
         return distance <= base_radius
 
     def get_valid_requests(self, base: dict, services: list, methods: list) -> list:
-        """Returns indices of bins in which item can fit."""
         valid_bin_indices = []
         for i in range(len(services)):
             for j in range(len(services[i]['locations'])):
              f = self.check_base_coverage(services[i]['locations'][j], base['location'], base['radius'])
              if(f):
-                 #i表示第几个用户，j表示第i个用户的第j个请求
-                valid_bin_indices.append([i,j]) #services[i]["lianlus"][j]表示第i个用户请求的第j个微服务
+                valid_bin_indices.append([i,j])
 
         lis = []
 
@@ -86,13 +71,13 @@ class EVA:
                         break
                 if f == 1:
 
-                    bins.append({"name":name,  #微服务的名字
-                                 "index_1":i,  #对应services中的第i[0]个用户第i[1]个微服务
-                                 "location":services[i[0]]["locations"][i[1]],  #微服务的地理位置
-                                 #"index_2":services[i]['index'],  #对应method中的索引
+                    bins.append({"name":name
+                                 "index_1":i,
+                                 "location":services[i[0]]["locations"][i[1]],
+                                 #"index_2":services[i]['index'],
                                  "number": base["category"][name - 1],
-                                 "index_3":j,  #对应method中符合条件的资源的下标
-                                 "resource":a[j]  #所选的资源
+                                 "index_3":j,
+                                 "resource":a[j]
                                        })
         return bins
 
@@ -103,9 +88,9 @@ class EVA:
                 if len(valid_requests_indices) == 0:
                     break
                 score = getattr(module, 'score')
-                #print('score OK')
+                 
                 priorities_index = score(base, valid_requests_indices)
-                #print('priorities_index',priorities_index)
+                 
                 best_service = valid_requests_indices[priorities_index]
 
                 services[best_service['index_1'][0]]['flags'][best_service['index_1'][1]] = True
