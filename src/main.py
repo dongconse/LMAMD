@@ -13,7 +13,7 @@ import random
 def generate_answer(prompt, id):
     url = "https://api.gptgod.online/v1/chat/completions"
     headers = {
-        "Authorization": "Bearer sk-your api",#your api
+        "Authorization": "Bearer your api",#your api
         "Content-Type": "application/json"
     }
     data = {
